@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Laugh:</b>
+  <%= @laugh.laugh %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @laugh.user_id %>
+</p>
+
+<p>
+  <b>Point:</b>
+  <%= @laugh.point %>
+</p>
+
+
+<%= link_to 'Edit', edit_laugh_path(@laugh) %> |
+<%= link_to 'Back', laughs_path %>

@@ -1,0 +1,24 @@
+<h1>笑いネタ一覧</h1>
+
+<table>
+  <tr>
+    <th class="list_menu">笑いネタ</th>
+    <th class="list_menu">作者</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @laughs.each do |laugh| %>
+  <tr>
+    <td><%= format_string_length(laugh.laugh,15) %></td>
+    <td><%= laugh.user_id %></td>
+    <td><%= link_to '詳細', laugh %></td>
+    <td><%= link_to '編集', edit_laugh_path(laugh) %></td>
+    <td><%= link_to '削除', laugh, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
