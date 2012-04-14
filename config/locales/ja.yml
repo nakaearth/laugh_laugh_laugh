@@ -191,3 +191,7 @@ ja:
         laugh: 笑いネタ
         user_id: 作者
         point: ポイント
+  label:
+    title:
+      laugh_regist: 笑いを登録
+    back: 戻る

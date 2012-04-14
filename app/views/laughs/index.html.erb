@@ -15,7 +15,7 @@
     <td><%= laugh.user_id %></td>
     <td><%= link_to '詳細', laugh %></td>
     <td><%= link_to '編集', edit_laugh_path(laugh) %></td>
-    <td><%= link_to '削除', laugh, confirm: 'Are you sure?', method: :delete %></td>
+    <td><% if current_user.id == session[:user_id] %><%= link_to '削除', laugh, confirm: '削除しますよ?', method: :delete %><% end %></td>
   </tr>
 <% end %>
 </table>

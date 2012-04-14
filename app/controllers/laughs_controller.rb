@@ -41,6 +41,7 @@ class LaughsController < ApplicationController
   # POST /laughs.json
   def create
     @laugh = Laugh.new(params[:laugh])
+    @laugh.user_id= sessino[:user_id]
 
     respond_to do |format|
       if @laugh.save
@@ -57,7 +58,7 @@ class LaughsController < ApplicationController
   # PUT /laughs/1.json
   def update
     @laugh = Laugh.find(params[:id])
-
+    @laugh.user_id= sessino[:user_id]
     respond_to do |format|
       if @laugh.update_attributes(params[:laugh])
         format.html { redirect_to @laugh, notice: 'Laugh was successfully updated.' }

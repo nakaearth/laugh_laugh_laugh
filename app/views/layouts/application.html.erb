@@ -8,18 +8,24 @@
 </head>
 <body>
 <div class="header">
-
 </div>
+<% if current_user == nil %>
+  <%= link_to 'Twitterログイン', "/auth/#{if Rails.env.production? then 'twitter' else  'developer' end}" %>
+<% end %>
+<% unless current_user == nil %>
+<%= render 'common/login_info' %> 
 <div class="wrapper">
   <div class="menu">
    <%= render 'common/menu' %> 
   </div>
+  <hr>
   <div class="content">
     <%= yield %>
   </div>
 </div>
-<div class="footer">
+<% end %>
 
+<div class="footer">
 </div>
 </body>
 </html>

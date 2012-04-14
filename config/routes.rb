@@ -1,5 +1,7 @@
 LaughLaugh::Application.routes.draw do
   resources :laughs
+  match "/auth/:provider/callback"=> "sessions#create"
+  match "/auth/logout" => "sessions#destroy"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
