@@ -1,5 +1,7 @@
 <h1>笑いネタ一覧</h1>
-
+<br>
+<p id="notice"><%= notice %></p>
+<%=will_paginate @laughs, :prev_label=>'<<前',:next_label=>'次>>' %>
 <table>
   <tr>
     <th class="list_menu">笑いネタ</th>
@@ -12,10 +14,10 @@
 <% @laughs.each do |laugh| %>
   <tr>
     <td><%= format_string_length(laugh.laugh,15) %></td>
-    <td><%= laugh.user_id %></td>
+    <td><%= laugh.user.name %></td>
     <td><%= link_to '詳細', laugh %></td>
-    <td><%= link_to '編集', edit_laugh_path(laugh) %></td>
-    <td><% if current_user.id == session[:user_id] %><%= link_to '削除', laugh, confirm: '削除しますよ?', method: :delete %><% end %></td>
+    <td><% if laugh.user_id == session[:user_id] %><%= link_to '編集', edit_laugh_path(laugh) %><% end %></td>
+    <td><% if laugh.user_id == session[:user_id] %><%= link_to '削除', laugh, confirm: '削除しますよ?', method: :delete %><% end %></td>
   </tr>
 <% end %>
 </table>

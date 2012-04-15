@@ -1,20 +1,22 @@
 <p id="notice"><%= notice %></p>
-
+<div class="laugh_form">
 <p>
-  <b>Laugh:</b>
+  <b><%=t "activerecord.attributes.laugh.laugh" %>:</b>
   <%= @laugh.laugh %>
 </p>
-
 <p>
-  <b>User:</b>
-  <%= @laugh.user_id %>
+  <b><%=t "activerecord.attributes.laugh.user_id" %>:</b>
+  <%= @auth_name %>
 </p>
-
 <p>
-  <b>Point:</b>
+  <b><%=t "activerecord.attributes.laugh.point" %>:</b>
   <%= @laugh.point %>
 </p>
+</div>
 
-
-<%= link_to 'Edit', edit_laugh_path(@laugh) %> |
+<% if @laugh.user_id==session[:user_id] %>
+  <%= link_to '編集する', edit_laugh_path(@laugh) %>&nbsp;&nbsp; |
+<% else %>&nbsp;&nbsp;|
+  <%=link_to '面白い！',:countup_laugh_point_laugh %>
+ <% end %>&nbsp;&nbsp;
 <%= link_to 'Back', laughs_path %>

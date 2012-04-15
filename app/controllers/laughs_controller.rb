@@ -1,9 +1,12 @@
+#coding: utf-8
+
 class LaughsController < ApplicationController
   # GET /laughs
   # GET /laughs.json
   def index
-    @laughs = Laugh.all
-
+    ActiveRecord::Base.cache do
+      @laughs = Laugh.latest.paginate(:page=>params[:page], :per_page=>10)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @laughs }
@@ -13,8 +16,10 @@ class LaughsController < ApplicationController
   # GET /laughs/1
   # GET /laughs/1.json
   def show
-    @laugh = Laugh.find(params[:id])
-
+    ActiveRecord::Base.cache do
+      @laugh = Laugh.find(params[:id])
+      @auth_name=@laugh.user.name
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @laugh }
@@ -41,7 +46,7 @@ class LaughsController < ApplicationController
   # POST /laughs.json
   def create
     @laugh = Laugh.new(params[:laugh])
-    @laugh.user_id= sessino[:user_id]
+    @laugh.user_id= session[:user_id]
 
     respond_to do |format|
       if @laugh.save
@@ -80,5 +85,13 @@ class LaughsController < ApplicationController
       format.html { redirect_to laughs_url }
       format.json { head :no_content }
     end
+  end
+  
+  def countup_laugh_point
+    @laugh = Laugh.find(params[:id])
+    @laugh.point += 1
+    @laugh.update_attribute(:point, @laugh.point)
+    @laugh.save!
+    redirect_to laughs_url notice: 'ありがとうございました'
   end
 end

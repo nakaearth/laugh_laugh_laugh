@@ -1,5 +1,7 @@
 LaughLaugh::Application.routes.draw do
-  resources :laughs
+  resources :laughs do
+    get 'countup_laugh_point',:on=>:member
+  end
   match "/auth/:provider/callback"=> "sessions#create"
   match "/auth/logout" => "sessions#destroy"
 

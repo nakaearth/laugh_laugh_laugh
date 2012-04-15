@@ -7,17 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="header">
-</div>
 <% if current_user == nil %>
+<div class="login_btn">
+  <%= image_tag "logo.jpg" %><br>
   <%= link_to 'Twitterログイン', "/auth/#{if Rails.env.production? then 'twitter' else  'developer' end}" %>
+</div>
 <% end %>
 <% unless current_user == nil %>
-<%= render 'common/login_info' %> 
+<%= render 'common/header' %>
+<br/><br/>
 <div class="wrapper">
-  <div class="menu">
-   <%= render 'common/menu' %> 
-  </div>
+  <%= render 'common/menu' %> 
   <hr>
   <div class="content">
     <%= yield %>

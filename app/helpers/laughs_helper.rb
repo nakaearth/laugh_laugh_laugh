@@ -1,3 +1,5 @@
+#coding: utf-8
+
 module LaughsHelper
 
   def format_string_length(message, max_length)
@@ -7,4 +9,5 @@ module LaughsHelper
       return CGI.escapeHTML(message)
     end
   end
+  
 end
