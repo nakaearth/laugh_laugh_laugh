@@ -1,5 +1,9 @@
+#coding: utf-8
+
 class Photo < ActiveRecord::Base
   scope :latest  ,order('updated_at desc')
+  belongs_to :user
+  
   validates :title  ,:presence=>true
   validates_attachment_size :photo ,:in =>1..5.megabyte,:message=>'ファイルサイズが大きすぎます' 
   if Rails.env.production? 

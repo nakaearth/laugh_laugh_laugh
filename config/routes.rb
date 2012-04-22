@@ -1,7 +1,5 @@
 LaughLaugh::Application.routes.draw do
-  get "photos/save"
-
-  get "photos/my_list"
+  resources :photos
 
   resources :laughs do
     get 'countup_laugh_point',:on=>:member

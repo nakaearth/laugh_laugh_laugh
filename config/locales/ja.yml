@@ -191,7 +191,14 @@ ja:
         laugh: 笑いネタ
         user_id: 作者
         point: ポイント
+      photo:
+        photo: 笑い
+        title: タイトル
+        description: 笑いのネタ
   label:
     title:
       laugh_regist: 笑いを登録
     back: 戻る
+  message:
+    view_title:
+      save_photo: 面白い画像

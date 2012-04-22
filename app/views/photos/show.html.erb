@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<div class="photo_form">
+<p>
+  <b><%=t "activerecord.attributes.photo.photo" %>:</b>
+  <%=image_tag  @photo.photo.url(:medium) %>
+</p>
+<p>
+  <b><%=t "activerecord.attributes.photo.title" %>:</b>
+  <%= @photo.title %>
+</p>
+<p>
+  <b><%=t "activerecord.attributes.photo.description" %>:</b>
+  <%= @photo.description %>
+</p>
+</div>
+<%= link_to '一覧に戻る', laughs_path %>

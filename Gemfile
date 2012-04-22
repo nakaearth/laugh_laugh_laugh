@@ -46,3 +46,10 @@ gem "whenever"
 gem "rspec"
 gem "rspec-rails", :group => :development
 gem "capybara"
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem "aws-sdk"
+
+group :production do
+  gem 'pg'
+  gem 'therubyracer-heroku', '0.8.1.pre3' 
+end

@@ -1,0 +1,28 @@
+<h1>画像の笑いネタ一覧</h1>
+<br>
+<p id="notice"><%= notice %></p>
+<%=will_paginate @photos, :prev_label=>'<<前',:next_label=>'次>>' %>
+<table>
+  <tr>
+    <th class="list_menu"></th>
+    <th class="list_menu">笑いネタ</th>
+    <th class="list_menu">作者</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @photos.each do |photo| %>
+  <tr>
+    <td><%=image_tag photo.photo.url(:thumb) %></td>
+    <td><%=photo.title %></td>
+    <td><%=photo.user.name %></td>
+    <td><%= link_to '詳細',photo  %></td>
+    <td><% if photo.user_id == session[:user_id] %><%= link_to '編集', edit_photo_path(photo) %><% end %></td>
+    <td><% if photo.user_id == session[:user_id] %><%= link_to '削除', photo, confirm: '削除しますよ?', method: :delete %><% end %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

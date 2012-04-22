@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :laughs
+  has_many :photos
 
   def self.create_with_omniauth(auth)
     user=User.new
