@@ -11,6 +11,8 @@
 <div class="login_btn">
   <%= image_tag "logo.jpg" %><br>
   <%= link_to 'Twitterログイン', "/auth/#{if Rails.env.production? then 'twitter' else  'developer' end}" %>
+  <br/> 
+  <%= link_to 'facebookログイン', "/auth/#{if Rails.env.production? then 'facebook' else  'developer' end}" %>
 </div>
 <% end %>
 <% unless current_user == nil %>
