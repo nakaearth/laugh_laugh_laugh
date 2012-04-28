@@ -2,15 +2,15 @@ require 'rest-graph'
 
 class SocialController < ApplicationController
   include RestGraph::RailsUtil
-  def index
-    access_token=current_user.token
+  before_filter :filter_setup_rest_graph
 
-    p 'NAME::::'+current_user.name
-    p 'TOKEH::::'+access_token
-    rg = RestGraph.new(:access_token=>access_token)
-    p rg
-    @mes=rg.get('me')
-    rg.get('me/likes')
-    render :text => rest_graph.get('me/home').inspect
+  def index
+    render :text=>rest_graph.get('me').inspect 
   end
+ 
+  private
+  def filter_setup_rest_graph
+    rest_graph_setup(:auto_authorize=>true) 
+  end
+  
 end
