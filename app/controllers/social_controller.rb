@@ -9,5 +9,6 @@ class SocialController < ApplicationController
     p rg
     @mes=rg.get('me')
     rg.get('me/likes')
+    render :text => rest_graph.get('me/home').inspect
   end
 end
