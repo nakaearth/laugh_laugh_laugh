@@ -4,8 +4,9 @@ class SocialController < ApplicationController
   include RestGraph::RailsUtil
   def index
     access_token=current_user.token
-    p current_user.name
-    p access_token
+
+    p 'NAME::::'+current_user.name
+    p 'TOKEH::::'+access_token
     rg = RestGraph.new(:access_token=>access_token)
     p rg
     @mes=rg.get('me')
