@@ -1,4 +1,6 @@
 LaughLaugh::Application.routes.draw do
+  get "social/index"
+
   resources :photos
 
   resources :laughs do
