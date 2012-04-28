@@ -1,6 +1,7 @@
 require 'rest-graph'
 
 class SocialController < ApplicationController
+  include RestGraph::RailsUtil
   def index
     access_token=current_user.token
     rg = RestGraph.new(:access_token=>access_token)
