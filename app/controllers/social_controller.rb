@@ -10,7 +10,7 @@ class SocialController < ApplicationController
  
   private
   def filter_setup_rest_graph
-    rest_graph_setup(:auto_authorize=>true) 
+    rest_graph_setup(:auto_authorize=>true,:auto_authorize_scope =>'read_stream') 
   end
   
 end
