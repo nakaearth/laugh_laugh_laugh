@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
       user.token=auth["credentials"]["token"] 
       user.secret=auth["credentials"]["secret"] 
     end
+    unless auth['access_token'].blank?
+      user.token=auth['access_token'] 
+    end
     user.save
     user
   end
