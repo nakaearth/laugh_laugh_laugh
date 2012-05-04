@@ -5,9 +5,10 @@ class SocialController < ApplicationController
     @facebook_user=FbGraph::User.new(@user.name,:access_token=>@user.token)
     p @user.name
     p @facebook_user.identifier
-    @facebook_user.fetch
-    @albums=@facebook_user.albums
+    p @facebook_user.name
+    @facebook_connect=FbGraph::User.fetch(@user.name,:access_token=>@user.token)
+    @albums=@facebook_connect.albums
     p @albums
-    p @facebook_user.friends
+    p @facebook_connect.friends
   end
 end
