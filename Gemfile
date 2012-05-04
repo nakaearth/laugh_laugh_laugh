@@ -54,5 +54,4 @@ group :production do
   gem 'pg'
 #  gem 'therubyracer-heroku', '0.8.1.pre3' 
 end
-gem 'rest-graph'
-gem 'rest-client', '>=1.6'
+gem 'fb_graph'

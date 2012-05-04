@@ -1,16 +1,9 @@
-require 'rest-graph'
-
 class SocialController < ApplicationController
-  include RestGraph::RailsUtil
-  before_filter :filter_setup_rest_graph
 
   def index
-    render :text=>rest_graph.get('me').inspect 
+    @user = User.find(session[:user_id])
+    @facebook_user=FbGraph::User.me(@user.name,@user.token)
+    p @user.name
+    p @facebook_user.name
   end
- 
-  private
-  def filter_setup_rest_graph
-    rest_graph_setup(:auto_authorize=>true,:auto_authorize_scope =>'read_stream') 
-  end
-  
 end
