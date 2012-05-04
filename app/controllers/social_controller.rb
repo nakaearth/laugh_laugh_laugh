@@ -9,6 +9,6 @@ class SocialController < ApplicationController
     @facebook_connect=FbGraph::User.fetch(@user.name.sub("\s","."),:access_token=>@user.token)
     @albums=@facebook_connect.albums
     p @albums
-    p @facebook_connect.friends
+    p @facebook_connect.events
   end
 end
