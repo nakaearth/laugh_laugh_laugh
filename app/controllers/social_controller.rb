@@ -10,5 +10,7 @@ class SocialController < ApplicationController
     @albums=@facebook_connect.albums
     p @albums
     p @facebook_connect.events
+    p @facebook_connect.likes
+    p @facebook_connect.friends
   end
 end
