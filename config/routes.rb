@@ -1,11 +1,13 @@
 LaughLaugh::Application.routes.draw do
+  get "point/give_point"
+
   get "social/index"
 
-  resources :photos
-
-  resources :laughs do
-    get 'countup_laugh_point',:on=>:member
+  resources :photos do
+    post 'give_point', :on=>:member 
   end
+
+  resources :laughs
   match "/auth/:provider/callback"=> "sessions#create"
   match "/auth/logout" => "sessions#destroy"
 

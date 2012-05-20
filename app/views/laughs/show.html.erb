@@ -16,7 +16,9 @@
 
 <% if @laugh.user_id==session[:user_id] %>
   <%= link_to '編集する', edit_laugh_path(@laugh) %>&nbsp;&nbsp; |
+  <%=link_to '面白い！',:point_give_point %>&nbsp;&nbsp;
 <% else %>&nbsp;&nbsp;|
-  <%=link_to '面白い！',:countup_laugh_point_laugh %>
+  <%=link_to '面白い！',:countup_laugh_point_laugh %> &nbsp:&nbsp|
+  <%=link_to '面白い！',:point_give_point %>%nbsp;&nbsp;
  <% end %>&nbsp;&nbsp;
 <%= link_to 'Back', laughs_path %>

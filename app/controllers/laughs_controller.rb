@@ -87,11 +87,4 @@ class LaughsController < ApplicationController
     end
   end
   
-  def countup_laugh_point
-    @laugh = Laugh.find(params[:id])
-    @laugh.point += 1
-    @laugh.update_attribute(:point, @laugh.point)
-    @laugh.save!
-    redirect_to laughs_url notice: 'ありがとうございました'
-  end
 end
