@@ -54,3 +54,6 @@ group :production do
   gem 'unicorn'
 end
 gem 'fb_graph'
+
+#Redis
+gem 'redis'

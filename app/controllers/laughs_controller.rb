@@ -1,4 +1,5 @@
 #coding: utf-8
+require 'redis'
 
 class LaughsController < ApplicationController
   # GET /laughs
@@ -7,6 +8,9 @@ class LaughsController < ApplicationController
     ActiveRecord::Base.cache do
       @laughs = Laugh.latest.paginate(:page=>params[:page], :per_page=>10)
     end
+    @auth_name = REDIS.get("AUTH_NAME") || "guest user"  if Rails.env.production?
+    @auth_name = "guest USER" unless Rails.env.production?
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @laughs }
@@ -19,6 +23,7 @@ class LaughsController < ApplicationController
     ActiveRecord::Base.cache do
       @laugh = Laugh.find(params[:id])
       @auth_name=@laugh.user.name
+      REDIS.set("AUTH_NAME",@auth_name)
     end
     respond_to do |format|
       format.html # show.html.erb

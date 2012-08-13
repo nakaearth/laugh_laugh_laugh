@@ -1,5 +1,6 @@
 <h1>笑いネタ一覧</h1>
 <br>
+<%= @auth_name %>
 <p id="notice"><%= notice %></p>
 <%=will_paginate @laughs, :prev_label=>'<<前',:next_label=>'次>>' %>
 <table>
