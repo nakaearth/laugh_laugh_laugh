@@ -29,7 +29,6 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -52,6 +51,6 @@ gem "aws-sdk"
 
 group :production do
   gem 'pg'
-#  gem 'therubyracer-heroku', '0.8.1.pre3' 
+  gem 'unicorn'
 end
 gem 'fb_graph'
